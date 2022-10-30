@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMotoresRetifica.View.ListaMedidas">
+S
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo" Clicked="ToolbarItem_Clicked_Novo"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray"
+                     Padding="10">
+
+            <Label Text="Cadastro de Medidas"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Title" FontAttributes="Bold"
+                   TextColor="Black"/>
+
+            <StackLayout BackgroundColor="WhiteSmoke" Margin="10" Padding="5">
+
+                <SearchBar x:Name="txt_Busca"
+                           Placeholder="Pesquisar motor"
+                           TextChanged="txt_Busca_TextChanged"/>
+
+                <RefreshView x:Name="ref_carregando" IsRefreshing="False">
+                    <ListView x:Name="lst_motores" ItemSelected="lst_motores_ItemSelected" Margin="10">
+                        <ListView.Header>
+
+                            <Label Text="Modelo" FontAttributes="Bold" TextColor="Black"/>
+                            
+                        </ListView.Header>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
+
+                                        <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
+                                    
+                                    </ViewCell.ContextActions>
+
+                                    <Label Text="{Binding NomeMotor}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>
+                </RefreshView>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
